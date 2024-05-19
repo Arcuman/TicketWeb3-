@@ -8,6 +8,8 @@ contract TokenMaster is ERC721 {
     uint256 public totalOccasions;
     uint256 public totalSupply;
 
+    event TicketBuy(address indexed buyer, uint256 indexed ticketId);
+
     struct Occasion {
         uint256 id;
         string name;
@@ -79,6 +81,8 @@ contract TokenMaster is ERC721 {
         totalSupply++;
 
         _safeMint(msg.sender, totalSupply);
+
+        emit TicketBuy(msg.sender, _id);
     }
 
     function getOccasion(uint256 _id) public view returns (Occasion memory) {

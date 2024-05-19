@@ -70,10 +70,11 @@ describe("TokenMaster", () => {
     const ID = 1
     const SEAT = 50
     const AMOUNT = ethers.utils.parseUnits('1', 'ether')
+    let transactionReceipt
 
     beforeEach(async () => {
       const transaction = await tokenMaster.connect(buyer).mint(ID, SEAT, { value: AMOUNT })
-      await transaction.wait()
+      transactionReceipt = await transaction.wait()
     })
 
     it('Updates ticket count', async () => {
@@ -101,6 +102,14 @@ describe("TokenMaster", () => {
       const balance = await ethers.provider.getBalance(tokenMaster.address)
       expect(balance).to.be.equal(AMOUNT)
     })
+
+    it('Emits TicketBuy event', async () => {
+      const event = transactionReceipt.events.find(event => event.event === 'TicketBuy');
+      expect(event).to.not.be.undefined;
+      expect(event.args.buyer).to.equal(buyer.address);
+      expect(event.args.ticketId).to.equal(ID);
+  });
+
   })
 
   describe("Withdrawing", () => {

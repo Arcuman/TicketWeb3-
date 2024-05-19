@@ -17,7 +17,7 @@ async function main() {
 
   console.log(`Deployed TokenMaster Contract at: ${tokenMaster.address}\n`)
 
-  // List 6 events
+  // List 5 events
   const occasions = [
     {
       name: "UFC Miami",
@@ -29,7 +29,7 @@ async function main() {
     },
     {
       name: "ETH Tokyo",
-      cost: tokens(1),
+      cost: tokens(0.01),
       tickets: 125,
       date: "Jun 2",
       time: "1:00PM JST",
@@ -37,7 +37,7 @@ async function main() {
     },
     {
       name: "ETH Privacy Hackathon",
-      cost: tokens(0.25),
+      cost: tokens(0.05),
       tickets: 200,
       date: "Jun 9",
       time: "10:00AM TRT",
@@ -45,7 +45,7 @@ async function main() {
     },
     {
       name: "Dallas Mavericks vs. San Antonio Spurs",
-      cost: tokens(5),
+      cost: tokens(0.025),
       tickets: 0,
       date: "Jun 11",
       time: "2:30PM CST",
@@ -53,7 +53,7 @@ async function main() {
     },
     {
       name: "ETH Global Toronto",
-      cost: tokens(1.5),
+      cost: tokens(0.15),
       tickets: 125,
       date: "Jun 23",
       time: "11:00AM EST",
